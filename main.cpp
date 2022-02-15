@@ -3,7 +3,7 @@
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(832, 704), "Snake");//size mus be multiple of 64
-    window.setFramerateLimit(8);
+    window.setFramerateLimit(9);
 
     sf::Event event;
     srand(clock());
