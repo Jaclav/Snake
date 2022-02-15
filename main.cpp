@@ -43,14 +43,8 @@ int main() {
         window.clear();
         window.draw(apple);
         window.draw(snake);
-        if(snake.intersects(apple.getGlobalBounds())) {
-            snake.setSize(snake.getSize() + 1);
-            text.setString("Points: " + std::to_string(snake.getSize() - 2)); //two is default size of snake
-            do {
-                apple.setPosition((rand() * 64) % window.getSize().x, (rand() * 64) % window.getSize().y);
-            } while(snake.intersects(apple.getGlobalBounds()));
-        }
 
+		//Did snake bit himself?
         if(snake.intersects(snake.getHeadBounds())) {
             text.setString("Game Over!");
             text.setCharacterSize(60);
@@ -64,6 +58,16 @@ int main() {
                 window.display();
             }
         }
+
+		//Did snake eat apple?
+        if(snake.intersects(apple.getGlobalBounds())) {
+            snake.setSize(snake.getSize() + 1);
+            text.setString("Points: " + std::to_string(snake.getSize() - 2)); //two is default size of snake
+            do {
+                apple.setPosition((rand() * 64) % window.getSize().x, (rand() * 64) % window.getSize().y);
+            } while(snake.intersects(apple.getGlobalBounds()));
+        }
+
         window.draw(text);
         window.display();
     }
